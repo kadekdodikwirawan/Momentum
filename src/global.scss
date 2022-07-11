@@ -1,0 +1,56 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+html{
+    margin: auto;
+    max-width: 500px;
+}
+body{
+    background:url('/assets/img/bg.jpg')  no-repeat;
+    background-size: 100% 30%;
+    background-color: #d9d9d9;
+    margin: auto;
+    max-width: 500px;
+}
+ion-toolbar{
+    --background: rgba(255, 255, 255, 0);
+}
+ion-content{
+    --background: rgb(255 255 255 / 58%);
+}
+.w-100{
+    width: 100%;
+}
+.fw-bolder{
+    font-weight: bolder;
+}
+.fs-3{
+    font-size: 3rem;
+}
+.text-shadow{
+    text-shadow: -2px 2px 2px #000000;
+}

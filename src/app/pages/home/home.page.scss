@@ -1,0 +1,59 @@
+ion-col{
+    padding: 3px
+}
+ion-col{
+    div{
+        background-color: white;
+        box-shadow: 2px 3px #ffb400;
+        border-radius: 11px;
+        padding: 15px;
+    }
+}
+.ml-4{
+    margin-left: 4px;
+}
+.mb-4{
+    margin-bottom: 4px;
+}
+.mt-30{
+    margin-top: 30%;
+}
+.icon-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.custom-shape-divider-top-1656590735 {
+    position: relative;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1656590735 svg, .custom-shape-divider-bottom-1656590735 svg {
+    position: relative;
+    display: block;
+    width: calc(132% + 1.3px);
+    height: 56px;
+}
+
+.custom-shape-divider-top-1656590735 .shape-fill, .custom-shape-divider-bottom-1656590735 .shape-fill {
+    fill: #EFEFEF;
+}
+
+.custom-shape-divider-bottom-1656590735 {
+    position: relative;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    // transform: rotate(180deg);
+}
+.app-name{
+    font-family: 'Shrikhand', cursive;
+    font-size: 27px;
+}

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buat Undangan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <div class="ion-padding" style="width: 100%;">
+      <h2><strong>Buat undangan baru</strong></h2>
+      <form [formGroup]="data">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Canva URL</ion-label>
+            <ion-input class="ion-margin-bottom" type="text" formControlName="canva_link"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Slug URL</ion-label>
+            <ion-input class="ion-margin-bottom" type="text" placeholder="Cth: dodik-eka" formControlName="slug">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Judul</ion-label>
+            <ion-input class="ion-margin-bottom" type="text" placeholder="Undangan Dodik & Eka" formControlName="title">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-row>
+          <ion-button (click)="createUndangan()">
+            Buat undangan
+          </ion-button>
+        </ion-row>
+      </form>
+    </div>
+  </ion-row>
+</ion-content>
