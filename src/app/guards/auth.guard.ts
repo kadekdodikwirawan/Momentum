@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     this.authService.isAuthenticated.subscribe(
       (res) => {
         if (res === false) {
-          localStorage.setItem('redirectTo', this.router.url);
+          localStorage.setItem('redirectTo', state.url);
           this.router.navigateByUrl('/apps/auth/login', { replaceUrl: true });
           return false;
         } else {

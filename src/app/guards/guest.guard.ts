@@ -16,7 +16,12 @@ export class GuestGuard implements CanActivate {
         if (res !== true) {
           return true;
         } else {
-          this.router.navigateByUrl('', { replaceUrl: true });
+          const redirect = localStorage.getItem('redirectTo');
+          if (redirect) {
+            this.router.navigateByUrl(redirect, { replaceUrl: true });
+          } else {
+            this.router.navigateByUrl('', { replaceUrl: true });
+          }
           return false;
         }
       }

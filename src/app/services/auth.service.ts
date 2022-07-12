@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { BehaviorSubject } from 'rxjs';
 import { Apollo, ApolloBase, gql } from 'apollo-angular';
@@ -44,7 +43,6 @@ export class AuthService {
   constructor(
     private apolloProvider: Apollo,
     private storage: Storage,
-    private router: Router
   ) {
     this.createStorage()
     this.loadToken()
@@ -67,29 +65,20 @@ export class AuthService {
       this.isAuthenticated.next(false);
     }
   }
-
-  async login(username: String, password: String) {
-    this.apollo.mutate({
+  async setToken(data: any) {
+    await this.storage.set(environment.TOKEN_KEY, data?.login?.authToken)
+    localStorage.setItem(environment.TOKEN_KEY, data?.login?.authToken)
+    this.$token.next(data?.login?.authToken);
+    this.$userdata.next(data?.login?.user)
+    this.isAuthenticated.next(true);
+  }
+  login(username: String, password: String) {
+    return this.apollo.mutate({
       mutation: LOGIN,
       variables: {
         username: username,
         password: password
       }
-    }).subscribe(async ({ data }: any) => {
-      await this.storage.set(environment.TOKEN_KEY, data?.login?.authToken)
-      localStorage.setItem(environment.TOKEN_KEY, data?.login?.authToken)
-      this.$token.next(data?.login?.authToken);
-      this.$userdata.next(data?.login?.user)
-      this.isAuthenticated.next(true);
-      const redirect = localStorage.getItem('redirectTo');
-          if (redirect) {
-            localStorage.removeItem('redirectTo');
-            this.router.navigate([redirect]);
-          } else {
-            this.router.navigate(['/']);
-          }
-    }, (error) => {
-      console.log(error);
     })
   }
   getMe() {

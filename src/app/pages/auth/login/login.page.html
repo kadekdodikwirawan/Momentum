@@ -23,10 +23,14 @@
                 <input type="password" class="form-control" name="password" [(ngModel)]="password">
               </div>
               <div class="d-flex mb-5 align-items-center">
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                <span class="ml-auto"><a href="#">
+                    <ion-text>Forgot Password</ion-text>
+                  </a></span>
               </div>
-              <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary"
-                (click)="login()">
+              <ion-button [disabled]="loading" expand="full" (click)="login()">
+                Log In
+                <ion-spinner name="dots" *ngIf="loading"></ion-spinner>
+              </ion-button>
             </form>
           </div>
         </div>

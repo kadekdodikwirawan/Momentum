@@ -9,9 +9,11 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule).then(() => {
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('ngsw-worker.js')
-      .then(() => console.log('service worker installed'))
-      .catch(err => console.error('Error', err));
+  if (environment.production) {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('ngsw-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
   }
 }).catch(err => console.log(err));
