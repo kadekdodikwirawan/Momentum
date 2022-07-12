@@ -81,7 +81,13 @@ export class AuthService {
       this.$token.next(data?.login?.authToken);
       this.$userdata.next(data?.login?.user)
       this.isAuthenticated.next(true);
-      this.router.navigate(['/apps/profile'])
+      const redirect = localStorage.getItem('redirectTo');
+          if (redirect) {
+            localStorage.removeItem('redirectTo');
+            this.router.navigate(redirect);
+          } else {
+            this.router.navigate('/');
+          }
     }, (error) => {
       console.log(error);
     })
