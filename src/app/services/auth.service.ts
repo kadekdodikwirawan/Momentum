@@ -51,7 +51,6 @@ export class AuthService {
   createStorage() {
     this.storage.create();
   }
-
   async loadToken() {
     const token = await this.storage.get(environment.TOKEN_KEY);
     if (token) {
@@ -86,7 +85,6 @@ export class AuthService {
       query: USER
     })
   }
-
   async logOut() {
     await this.storage.remove(environment.TOKEN_KEY)
     await this.apollo.client.resetStore();
