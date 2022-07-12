@@ -84,9 +84,9 @@ export class AuthService {
       const redirect = localStorage.getItem('redirectTo');
           if (redirect) {
             localStorage.removeItem('redirectTo');
-            this.router.navigate(redirect);
+            this.router.navigate([redirect]);
           } else {
-            this.router.navigate('/');
+            this.router.navigate(['/']);
           }
     }, (error) => {
       console.log(error);
