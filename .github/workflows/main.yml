@@ -21,4 +21,4 @@ jobs:
         server: ${{ secrets.LARAVEL_SITE_SERVER}}
         username: ${{ secrets.LARAVEL_SITE_USER}}
         password: ${{ secrets.LARAVEL_SITE_PASS}}
-        server-dir: /home/u300355555/domains/momentum.my.id/
+        server-dir: /domains/momentum.my.id/
