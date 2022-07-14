@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 import { GuestGuard } from '../guards/guest.guard';
 import { LoginPageModule } from '../pages/auth/login/login.module';
+import { RegisterPageModule } from '../pages/auth/register/register.module';
 import { BuatundanganPageModule } from '../pages/buatundangan/buatundangan.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
@@ -35,6 +36,11 @@ const routes: Routes = [
       {
         path: 'auth/login',
         loadChildren: () => LoginPageModule,
+        canActivate: [GuestGuard]
+      },
+      {
+        path: 'auth/register',
+        loadChildren: () => RegisterPageModule,
         canActivate: [GuestGuard]
       },
       {

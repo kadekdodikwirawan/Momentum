@@ -11,7 +11,7 @@
     </ion-card>
   </ng-template>
   <ion-card class="ion-text-center" *ngIf="(me$ | async) as me; else loading">
-    <ion-item style="display: inline-block;">
+    <ion-item class="ion-padding" style="display: inline-block;">
       <img [src]="me.avatar.url" [alt]="me.username" class="img-rounded">
     </ion-item>
     <ion-item class="ion-text-center">

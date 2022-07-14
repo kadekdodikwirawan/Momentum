@@ -11,26 +11,34 @@
         <div class="col-md-12">
           <div class="form-block">
             <div class="mb-4">
-              <h3>Sign In to <strong>Momentum</strong></h3>
+              <h3>Sign In <strong>Momentum</strong></h3>
             </div>
-            <form action="#" method="post">
+            <form action="#" method="post" [formGroup]="userdata">
               <div class="form-group first">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" [(ngModel)]="username">
+                <input type="text" class="form-control" name="username" formControlName="username">
               </div>
               <div class="form-group last mb-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="password">
+                <input type="password" class="form-control" name="password" formControlName="password">
               </div>
               <div class="d-flex mb-5 align-items-center">
                 <span class="ml-auto"><a href="#">
                     <ion-text>Forgot Password</ion-text>
-                  </a></span>
+                  </a>
+                </span>
               </div>
-              <ion-button [disabled]="loading" expand="full" (click)="login()">
+              <ion-button [disabled]="!userdata.valid" expand="full" (click)="login()">
                 Log In
                 <ion-spinner name="dots" *ngIf="loading"></ion-spinner>
               </ion-button>
+              <div class="ion-text-center">
+                <span>OR</span>
+              </div>
+              <ion-button expand="full" [routerLink]="['/apps/auth/register']">
+                Register
+              </ion-button>
+
             </form>
           </div>
         </div>

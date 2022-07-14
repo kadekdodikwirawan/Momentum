@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <div class="row justify-content-center">
+    <div>
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="form-block">
+            <div class="mb-4">
+              <h3>Daftar <strong>Momentum</strong></h3>
+            </div>
+            <form [formGroup]="userdata">
+              <div class="form-group first">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" formControlName="username">
+              </div>
+              <div class="form-group first">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+              </div>
+              <div class="form-group last mb-4">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+              </div>
+              <div class="form-group last mb-4">
+                <label> Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confirmPass">
+              </div>
+              <ion-button [disabled]="loading" expand="full" (click)="register()">
+                Register
+                <ion-spinner name="dots" *ngIf="loading"></ion-spinner>
+              </ion-button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

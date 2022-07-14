@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage-angular';
 import { BehaviorSubject } from 'rxjs';
 import { Apollo, ApolloBase, gql } from 'apollo-angular';
 import { environment } from 'src/environments/environment';
+import { FormGroup } from '@angular/forms';
 
 const USER = gql`query Viewer{
   viewer{
@@ -28,6 +29,16 @@ const LOGIN = gql`mutation Login($username: String!, $password: String!) {
     }
   }
 }`
+
+const REGISTER = gql`mutation registerUser($username: String!, $password: String, $email: String) {
+  registerUser(input: {username: $username, email: $email, password: $password}) {
+    user {
+      username
+      email
+    }
+  }
+}`
+
 @Injectable({
   providedIn: 'root'
 })
@@ -71,12 +82,24 @@ export class AuthService {
     this.$userdata.next(data?.login?.user)
     this.isAuthenticated.next(true);
   }
-  login(username: String, password: String) {
+  login(userdata: FormGroup) {
+    const { username, password } = userdata.value
     return this.apollo.mutate({
       mutation: LOGIN,
       variables: {
-        username: username,
-        password: password
+        username,
+        password
+      }
+    })
+  }
+  register(userdata: FormGroup) {
+    const { username, password, email } = userdata.value
+    return this.apollo.mutate({
+      mutation: REGISTER,
+      variables: {
+        username,
+        password,
+        email
       }
     })
   }

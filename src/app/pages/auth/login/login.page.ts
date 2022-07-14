@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import presentAlert from 'src/app/utils/alertCtrl';
 
@@ -9,18 +10,22 @@ import presentAlert from 'src/app/utils/alertCtrl';
 })
 export class LoginPage implements OnInit {
 
-  username: String;
-  password: String;
+  userdata: FormGroup;
   loading = false;
   constructor(
+    private formBuilder: FormBuilder,
     private auth: AuthService,
   ) { }
 
   ngOnInit() {
+    this.userdata = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
   }
   login() {
     this.loading = true;
-    this.auth.login(this.username, this.password).subscribe(async ({ data }: any) => {
+    this.auth.login(this.userdata).subscribe(async ({ data }: any) => {
       this.auth.setToken(data);
       // redirect on GuestGuard
       this.loading = false;

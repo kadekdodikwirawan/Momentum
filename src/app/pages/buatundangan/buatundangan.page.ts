@@ -11,6 +11,7 @@ import { UndanganService } from 'src/app/services/undangan.service';
 export class BuatundanganPage implements OnInit {
 
   // extract param 'text'
+  embedLink: any;
   data: FormGroup;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,8 +21,9 @@ export class BuatundanganPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((param => {
+      this.embedLink = param.text ? param.text.split("?")[0] + '?embed' : null;
       this.data = this.fb.group({
-        canva_link: [param.text ? param.text.split("watch?")[0] + 'view?embed' : '', [Validators.required]], //view?embed && view?website
+        canva_link: [param.text ? param.text.split("?")[0] + '?embed' : '', [Validators.required]], //view?embed && view?website
         title: ['', Validators.required],
         slug: ['', [Validators.required, this.noWhitespace]]
       })

@@ -8,6 +8,7 @@ import { BuatundanganPageRoutingModule } from './buatundangan-routing.module';
 
 import { BuatundanganPage } from './buatundangan.page';
 import { UndanganService } from 'src/app/services/undangan.service';
+import { SafePipe } from 'src/app/pipe/safe.pipe';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { UndanganService } from 'src/app/services/undangan.service';
     BuatundanganPageRoutingModule
   ],
   providers: [UndanganService],
-  declarations: [BuatundanganPage]
+  declarations: [BuatundanganPage, SafePipe]
 })
 export class BuatundanganPageModule { }
