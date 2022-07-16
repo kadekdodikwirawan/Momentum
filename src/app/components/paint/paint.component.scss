@@ -1,0 +1,18 @@
+.justify-center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#fabric-canvas-wrapper{
+    margin: auto;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    background: #fff;
+    box-shadow: 4px 4px 10px #0000007a;
+}
+ion-fab{
+    position: fixed;
+    bottom: 8px;
+}

@@ -6,6 +6,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
+  {
+    path: 'apps/editor',
+    loadChildren: () => import('./pages/editor/editor.module').then(m => m.EditorPageModule)
+  },
 ];
 @NgModule({
   imports: [

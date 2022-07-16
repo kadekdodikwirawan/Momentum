@@ -4,19 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ShopPageRoutingModule } from './shop-routing.module';
+import { EditorPageRoutingModule } from './editor-routing.module';
 
-import { ShopPage } from './shop.page';
+import { EditorPage } from './editor.page';
+import { PaintComponent } from 'src/app/components/paint/paint.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShopPageRoutingModule,
+    EditorPageRoutingModule,
   ],
   declarations: [
-    ShopPage,
+    EditorPage,
+    PaintComponent
   ]
 })
-export class ShopPageModule { }
+export class EditorPageModule { }

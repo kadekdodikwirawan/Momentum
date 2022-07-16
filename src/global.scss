@@ -25,16 +25,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-html{
-    margin: auto;
-    max-width: 500px;
-}
 body{
     background:url('/assets/img/bg.jpg')  no-repeat;
-    background-size: 100% 30%;
+    background-size: 'cover';
     background-color: #d9d9d9;
-    margin: auto;
-    max-width: 500px;
+    // margin: auto;
+    // max-width: 500px;
 }
 ion-toolbar{
     --background: rgba(255, 255, 255, 0);

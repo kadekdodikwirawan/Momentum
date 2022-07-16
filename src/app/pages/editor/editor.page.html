@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="undo()">
+        <ion-icon size="large" name="arrow-undo-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="redo()">
+        <ion-icon size="large" name="arrow-redo-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="saveCanvas()">
+        <ion-icon size="large" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-paint></app-paint>
+</ion-content>
