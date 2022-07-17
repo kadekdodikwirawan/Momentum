@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fabric } from 'fabric';
 import 'fabric-history';
+import { initAligningGuidelines, initCenteringGuidelines } from '../lib/canvasGuidline';
 
 
 @Injectable({
@@ -26,6 +27,8 @@ export class FabricService {
     this._canvas.on('selection:updated', (obj: any) => this.selectedObj = obj)
     this._canvas.on('selection:cleared', (obj: any) => this.selectedObj = null)
     this._canvas.add(new fabric.Textbox('Hello Fabric!'));
+    initAligningGuidelines(this._canvas);
+    initCenteringGuidelines(this._canvas);
   }
   removeObj() {
     this._canvas.remove(this._canvas.getActiveObject());
@@ -36,6 +39,9 @@ export class FabricService {
       obj.set({ left: 0 })
       this._canvas.add(obj)
     })
+  }
+  enterEditing(obj: any) {
+    obj.enterEditing()
   }
   saveSVG() {
     const svg = this._canvas.toSVG();
