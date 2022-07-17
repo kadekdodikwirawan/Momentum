@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PaintComponent } from 'src/app/components/paint/paint.component';
+import { FabricService } from 'src/app/services/fabric.service';
 
 @Component({
   selector: 'app-editor',
@@ -8,18 +9,11 @@ import { PaintComponent } from 'src/app/components/paint/paint.component';
 })
 export class EditorPage implements OnInit {
   @ViewChild(PaintComponent)
-  private paintComponent: PaintComponent
-  constructor() { }
+  public paintComponent: PaintComponent
+  constructor(
+    public fabric: FabricService
+  ) { }
 
   ngOnInit() {
-  }
-  saveCanvas() {
-    this.paintComponent.saveSVG();
-  }
-  undo() {
-    this.paintComponent.undo();
-  }
-  redo() {
-    this.paintComponent.redo()
   }
 }

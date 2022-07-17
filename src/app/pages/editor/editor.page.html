@@ -5,13 +5,13 @@
     </ion-buttons>
     <ion-title>Editor</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="undo()">
+      <ion-button (click)="fabric.undo()">
         <ion-icon size="large" name="arrow-undo-circle-outline"></ion-icon>
       </ion-button>
-      <ion-button (click)="redo()">
+      <ion-button (click)="fabric.redo()">
         <ion-icon size="large" name="arrow-redo-circle-outline"></ion-icon>
       </ion-button>
-      <ion-button (click)="saveCanvas()">
+      <ion-button (click)="fabric.saveSVG()">
         <ion-icon size="large" name="save-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,4 +20,28 @@
 
 <ion-content>
   <app-paint></app-paint>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button id="open-modal">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+<app-toolbar></app-toolbar>
+<ion-modal trigger="open-modal" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Welcome</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid class="ion-padding">
+        <ion-row *ngIf="paintComponent.icons">
+          <ion-col *ngFor="let icon of paintComponent.icons" size="3">
+            <img [src]="icon.images[512]" [alt]="icon.family_name" (click)="paintComponent.addIcon(icon.images[512])">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>

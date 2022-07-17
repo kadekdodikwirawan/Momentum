@@ -8,6 +8,7 @@ import { EditorPageRoutingModule } from './editor-routing.module';
 
 import { EditorPage } from './editor.page';
 import { PaintComponent } from 'src/app/components/paint/paint.component';
+import { ToolbarComponent } from 'src/app/components/paint/toolbar/toolbar.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { PaintComponent } from 'src/app/components/paint/paint.component';
   ],
   declarations: [
     EditorPage,
-    PaintComponent
+    PaintComponent,
+    ToolbarComponent
   ]
 })
 export class EditorPageModule { }

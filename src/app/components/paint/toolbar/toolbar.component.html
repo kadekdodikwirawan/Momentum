@@ -1,0 +1,20 @@
+<ion-tab-bar slot="bottom" *ngIf="fabric.selectedObj && fabric.selectedObj.selected[0].type === 'textbox'">
+  <ion-tab-button>
+    <ion-icon name="document-text-outline"></ion-icon>
+    <ion-label>Edit</ion-label>
+  </ion-tab-button>
+  <ion-tab-button>
+    <ion-icon name="trash-outline"></ion-icon>
+    <ion-label>
+      Hapus
+    </ion-label>
+  </ion-tab-button>
+  <ion-tab-button>
+    <ion-icon name="duplicate-outline" (click)="fabric.duplicate()"></ion-icon>
+    <ion-label>Duplikat</ion-label>
+  </ion-tab-button>
+  <ion-tab-button>
+    <ion-icon name="text-outline"></ion-icon>
+    <ion-label>Font</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
