@@ -1,0 +1,12 @@
+ion-tab-bar {
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    justify-content: left;
+  }
+  ion-tab-button{
+    min-width: 70px;
+}
+.selected{
+    color: #3880ff;
+}

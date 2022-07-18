@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Tambah element</ion-title>
+    <ion-title>Icons</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar #searchBar (ionChange)="getIcons()" [debounce]="500"></ion-searchbar>
+  <ion-searchbar placeholder="Cari..." debounce="2500" [(ngModel)]="keyword" (ionChange)="getIcons()"></ion-searchbar>
   <ion-grid class="ion-padding">
     <ion-row *ngIf="icons; else cari">
       <ion-col *ngFor="let icon of icons" size="3">
@@ -12,11 +12,11 @@
       </ion-col>
     </ion-row>
     <ng-template #cari>
-      <ion-row class="ion-text-center">
+      <ion-text class="ion-text-center">
         <p>
           <ion-icon size="large" name="search-sharp"></ion-icon> Masukan keword icons
         </p>
-      </ion-row>
+      </ion-text>
     </ng-template>
   </ion-grid>
 </ion-content>

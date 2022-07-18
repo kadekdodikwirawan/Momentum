@@ -16,6 +16,7 @@ export class FabricService {
   public setCanvas() {
     this._canvas = new fabric.Canvas('fabricSurface', {
       // isDrawingMode: true,
+      centeredScaling: true,
       backgroundColor: 'transparent',
       selection: false,
       preserveObjectStacking: true,
@@ -45,6 +46,7 @@ export class FabricService {
   }
   saveSVG() {
     const svg = this._canvas.toSVG();
+    navigator.clipboard.writeText(svg)
     console.log(svg);
   }
   undo() {
@@ -54,5 +56,13 @@ export class FabricService {
   redo() {
     // @ts-ignore
     this._canvas.redo()
+  }
+  animate() {
+    this._canvas.getActiveObject().animate(
+      'left', this._canvas.getActiveObject().left === 100 ? 400 : 100, {
+      duration: 1000,
+      onChange: this._canvas.renderAll.bind(this._canvas)
+    }
+    )
   }
 }

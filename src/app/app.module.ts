@@ -13,17 +13,23 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { IconsComponent } from './components/icons/icons.component';
+import { FormsModule } from '@angular/forms';
+import { OptionsComponent } from './components/options/options.component';
+import { ModalFabComponent } from './components/modal-fab/modal-fab.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IconsComponent
+    IconsComponent,
+    OptionsComponent,
+    ModalFabComponent
   ],
   imports: [
     IonicStorageModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     GraphqlModule,
+    FormsModule,
     IonicModule.forRoot(),
     AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

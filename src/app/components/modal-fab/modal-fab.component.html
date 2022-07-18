@@ -1,0 +1,25 @@
+<ion-tab-bar slot="bottom">
+  <ion-tab-button (click)="tab = 'icons'" [ngClass]="tab === 'icons'? 'selected': ''">
+    <ion-icon name="aperture-outline"></ion-icon>
+    <ion-label>Icons</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="tab = 'background'" [ngClass]="tab === 'background'? 'selected': ''">
+    <ion-icon name="images-outline"></ion-icon>
+    <ion-label>
+      Background
+    </ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="tab = 'upload'" [ngClass]="tab === 'upload' ? 'selected': ''">
+    <ion-icon name="cloud-upload-outline"></ion-icon>
+    <ion-label>Upload</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="tab = 'template'" [ngClass]="tab === 'template' ? 'selected': ''">
+    <ion-icon name="journal-outline"></ion-icon>
+    <ion-label>Template</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+
+<ion-content>
+  <app-icons *ngIf="tab === 'icons'"></app-icons>
+  <div *ngIf="tab === 'background'">Back</div>
+</ion-content>

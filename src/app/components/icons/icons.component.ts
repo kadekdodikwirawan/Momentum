@@ -11,7 +11,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class IconsComponent implements OnInit {
 
-  public keyword = 'car';
+  keyword: any;
   icons: any;
   constructor(
     private http: HttpClient,
@@ -20,10 +20,12 @@ export class IconsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIcons()
   }
 
   async getIcons() {
+    if (!this.keyword) {
+      return
+    }
     const headers = {
       'Accept': 'application/json',
       'Authorization': `Bearer  ${localStorage.getItem('flaticon-token') ? localStorage.getItem('flaticon-token') : ''}`

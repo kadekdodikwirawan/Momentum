@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { IconsComponent } from 'src/app/components/icons/icons.component';
+import { ModalFabComponent } from 'src/app/components/modal-fab/modal-fab.component';
+import { OptionsComponent } from 'src/app/components/options/options.component';
 import { PaintComponent } from 'src/app/components/paint/paint.component';
 import { FabricService } from 'src/app/services/fabric.service';
 
@@ -19,11 +20,19 @@ export class EditorPage implements OnInit {
 
   ngOnInit() {
   }
+  async options() {
+    const modal = await this.modalCtrl.create({
+      component: OptionsComponent,
+      breakpoints: [0.50, 0.75, 1],
+      initialBreakpoint: 0.50
+    })
+    modal.present();
+  }
   async modalIcons() {
     const modal = await this.modalCtrl.create({
-      component: IconsComponent,
-      breakpoints: [0.25, 0.50, 0.75],
-      initialBreakpoint: 0.25
+      component: ModalFabComponent,
+      breakpoints: [0.50, 0.75, 1],
+      initialBreakpoint: 0.50
     })
     modal.present();
   }
