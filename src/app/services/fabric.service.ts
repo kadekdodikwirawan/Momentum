@@ -27,7 +27,9 @@ export class FabricService {
     this._canvas.on('selection:created', (obj: any) => this.selectedObj = obj)
     this._canvas.on('selection:updated', (obj: any) => this.selectedObj = obj)
     this._canvas.on('selection:cleared', (obj: any) => this.selectedObj = null)
-    this._canvas.add(new fabric.Textbox('Hello Fabric!'));
+    this._canvas.add(new fabric.Textbox('Hello Fabric!', {
+      fontFamily: 'Roboto'
+    }));
     initAligningGuidelines(this._canvas);
     initCenteringGuidelines(this._canvas);
   }
@@ -48,6 +50,10 @@ export class FabricService {
     const svg = this._canvas.toSVG();
     navigator.clipboard.writeText(svg)
     console.log(svg);
+  }
+  setFont(fontName: string) {
+    // @ts-ignore
+    this._canvas.getActiveObject().set("fontFamily", fontName)
   }
   undo() {
     // @ts-ignore

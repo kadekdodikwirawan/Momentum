@@ -16,11 +16,13 @@ import { IconsComponent } from './components/icons/icons.component';
 import { FormsModule } from '@angular/forms';
 import { OptionsComponent } from './components/options/options.component';
 import { ModalFabComponent } from './components/modal-fab/modal-fab.component';
+import { FontsComponent } from './components/fonts/fonts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IconsComponent,
+    FontsComponent,
     OptionsComponent,
     ModalFabComponent
   ],

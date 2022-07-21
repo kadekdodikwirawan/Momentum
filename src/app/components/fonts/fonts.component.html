@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fonts</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Font Family
+        </ion-label>
+        <ion-select placeholder="Pilih font" [selectedText]="fontFamily"
+          (ionChange)="activeObjSet('fontFamily', $event.target)">
+          <ion-select-option *ngFor="let font of fontFamilys" [value]="font">
+            {{font}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            Font Size
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col>
+      <ion-range [value]="fontSize" (pinFormatter)="pinFormatter($event.target)" [pin]="true"
+        (ionChange)="activeObjSet('fontSize', $event.target)"></ion-range>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            Font Weight
+          </ion-label>
+          <ion-select placeholder="Pilih font" [selectedText]="fontWeight"
+            (ionChange)="activeObjSet('fontWeight',$event.target)">
+            <ion-select-option *ngFor="let fw of fontWeights" [value]="fw">
+              {{fw}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            Font Color
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col>
+      <input type="color" [value]="fontColor" (change)="activeObjSet('fill', $event.target)">
+    </ion-col>
+  </ion-row>
+</ion-content>

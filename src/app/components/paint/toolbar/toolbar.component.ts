@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FabricService } from 'src/app/services/fabric.service';
-import { FontSizeComponent } from '../../font-size/font-size.component';
+import { FontsComponent } from '../../fonts/fonts.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -17,11 +17,11 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() { }
 
-  async selectFontsize() {
+  async selectFont() {
     const modal = await this.modalctrl.create({
-      component: FontSizeComponent,
-      breakpoints: [0.2],
-      initialBreakpoint: 0.2
+      component: FontsComponent,
+      breakpoints: [0.4],
+      initialBreakpoint: 0.4
     });
     modal.present()
   }
