@@ -1,3 +1,19 @@
-<ion-content>
-  Page Options
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Page Options</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h2>Canvas dimensi <ion-icon name="create-outline" (click)="editWHFn()"></ion-icon>
+  </h2>
+  <ion-row>
+    <ion-col>
+      <strong> Width: {{!editWH ? canvasWidth : ''}} </strong>
+      <ion-input (ionChange)="changeCanvas('width', $event.target)" *ngIf="editWH" [value]="canvasWidth"></ion-input>
+    </ion-col>
+    <ion-col>
+      <strong>Height: {{!editWH ? canvasHeight: ''}}</strong>
+      <ion-input (ionChange)="changeCanvas('height', $event.target)" *ngIf="editWH" [value]="canvasHeight"></ion-input>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -1,3 +1,39 @@
-<div class="ion-padding">
-
-</div>
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Fonts Size</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row>
+        <ion-col>
+            <ion-list>
+                <ion-item>
+                    <ion-label>
+                        Font Size
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+        <ion-col>
+            <ion-range [value]="fontSize" (pinFormatter)="pinFormatter($event.target)" [pin]="true"
+                (ionChange)="activeObjSet('fontSize', $event.target)"></ion-range>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-list>
+                <ion-item>
+                    <ion-label>
+                        Font Weight
+                    </ion-label>
+                    <ion-select placeholder="Pilih font" [selectedText]="fontWeight"
+                        (ionChange)="activeObjSet('fontWeight',$event.target)">
+                        <ion-select-option *ngFor="let fw of fontWeights" [value]="fw">
+                            {{fw}}
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

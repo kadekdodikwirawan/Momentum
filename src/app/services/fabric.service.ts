@@ -11,7 +11,39 @@ export class FabricService {
 
   public _canvas?: fabric.Canvas;
   public selectedObj: any = null;
-  constructor() { }
+  constructor() {
+    fabric.Object.prototype.set({
+      borderColor: 'red',
+      cornerColor: 'red',
+      cornerStyle: 'circle'
+    })
+    // add custom property to object
+    fabric.Object.prototype.toObject = (function (toObject) {
+      return function (propertiesToInclude) {
+        propertiesToInclude = (propertiesToInclude || []).concat(
+          ['uuid', 'class']
+        );
+        return toObject.apply(this, [propertiesToInclude]);
+      };
+    })(fabric.Object.prototype.toObject);
+
+    // add property class when call toSvg Fn
+    // @ts-ignore
+    fabric.SHARED_ATTRIBUTES.push('class')
+    fabric.Path.ATTRIBUTE_NAMES.push('class')
+    fabric.Image.ATTRIBUTE_NAMES.push('class')
+    fabric.Textbox.prototype.toSVG = (function (_toSVG) {
+      return function () {
+        let svg = _toSVG.call(this).split(" ");
+        let cleanSvg = _toSVG.call(this)
+        if (this.class) {
+          svg.splice(1, 0, 'class="' + this.class + '"');
+          cleanSvg = svg.join(' ')
+        }
+        return cleanSvg;
+      }
+    })(fabric.Textbox.prototype.toSVG)
+  }
 
   public setCanvas() {
     this._canvas = new fabric.Canvas('fabricSurface', {
@@ -48,6 +80,7 @@ export class FabricService {
   }
   saveSVG() {
     const svg = this._canvas.toSVG();
+    // const svg = this._canvas.toJSON();
     navigator.clipboard.writeText(svg)
     console.log(svg);
   }

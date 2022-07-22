@@ -13,9 +13,13 @@
     <ion-icon name="duplicate-outline" (click)="fabric.duplicate()"></ion-icon>
     <ion-label>Duplikat</ion-label>
   </ion-tab-button>
-  <ion-tab-button (click)="selectFont()">
+  <ion-tab-button (click)="selectFontSize()">
     <ion-icon name="text-outline"></ion-icon>
-    <ion-label>Font</ion-label>
+    <ion-label>Font size</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="selectFont()">
+    <ion-icon src="/assets/icon/font-family.svg"></ion-icon>
+    <ion-label>Font Family</ion-label>
   </ion-tab-button>
   <ion-tab-button (click)="fabric._canvas.getActiveObject().bringForward()">
     <ion-icon name="layers-outline"></ion-icon>
@@ -28,6 +32,10 @@
   <ion-tab-button (click)="fabric.animate()">
     <ion-icon name="layers-sharp"></ion-icon>
     <ion-label>Animasi</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="setJson()">
+    <ion-icon name="layers-sharp"></ion-icon>
+    <ion-label>Json</ion-label>
   </ion-tab-button>
 </ion-tab-bar>
 

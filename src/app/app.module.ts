@@ -17,12 +17,14 @@ import { FormsModule } from '@angular/forms';
 import { OptionsComponent } from './components/options/options.component';
 import { ModalFabComponent } from './components/modal-fab/modal-fab.component';
 import { FontsComponent } from './components/fonts/fonts.component';
+import { FontSizeComponent } from './components/font-size/font-size.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IconsComponent,
     FontsComponent,
+    FontSizeComponent,
     OptionsComponent,
     ModalFabComponent
   ],

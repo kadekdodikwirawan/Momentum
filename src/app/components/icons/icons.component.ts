@@ -12,7 +12,8 @@ import { ModalController } from '@ionic/angular';
 export class IconsComponent implements OnInit {
 
   keyword: any;
-  icons: any;
+  icons: any[] = [];
+  loading = false;
   constructor(
     private http: HttpClient,
     public fabric: FabricService,
@@ -23,6 +24,7 @@ export class IconsComponent implements OnInit {
   }
 
   async getIcons() {
+    this.loading = true
     if (!this.keyword) {
       return
     }
@@ -34,6 +36,7 @@ export class IconsComponent implements OnInit {
     this.http.get(`https://api.flaticon.com/v3/search/icons/added?q=${this.keyword}&styleShape=fill&limit=75`, { headers }).subscribe(
       (res: any) => {
         this.icons = res.data
+        this.loading = false
       },
       (err: any) => {
         this.flaticonAuth()
