@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FabricService } from 'src/app/services/fabric.service';
+import { AddLinkComponent } from '../../add-link/add-link.component';
 import { FontSizeComponent } from '../../font-size/font-size.component';
 import { FontsComponent } from '../../fonts/fonts.component';
 
@@ -36,6 +37,14 @@ export class ToolbarComponent implements OnInit {
   }
   setJson() {
     // @ts-ignore
-    this.fabric._canvas.getActiveObject().set('class', 'animate__animated animate__bounceInDown')
+    this.fabric._canvas.getActiveObject().set('class', 'apple')
+  }
+  async addLink() {
+    const modal = await this.modalctrl.create({
+      component: AddLinkComponent,
+      breakpoints: [0, 0.4],
+      initialBreakpoint: 0.4
+    });
+    modal.present()
   }
 }

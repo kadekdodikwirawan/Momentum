@@ -16,4 +16,13 @@
       <ion-input (ionChange)="changeCanvas('height', $event.target)" *ngIf="editWH" [value]="canvasHeight"></ion-input>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <label>Pilih halaman</label>
+    <select *ngIf="canvasPages.length > 0" (change)="switchPage($event)">
+      <option *ngFor="let canvas of canvasPages; index as i" [value]="i">{{i+1}}</option>
+    </select> <br>
+    <ion-button (click)="addPage()">
+      Add Page
+    </ion-button>
+  </ion-row>
 </ion-content>

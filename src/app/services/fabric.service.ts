@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fabric } from 'fabric';
 import 'fabric-history';
+import { Subject } from 'rxjs';
 import { initAligningGuidelines, initCenteringGuidelines } from '../lib/canvasGuidline';
 
 
@@ -9,7 +10,9 @@ import { initAligningGuidelines, initCenteringGuidelines } from '../lib/canvasGu
 })
 export class FabricService {
 
-  public _canvas?: fabric.Canvas;
+  public canvasPages: fabric.Canvas[] = []
+  public currenPage: number = 0
+  public _canvas: fabric.Canvas;
   public selectedObj: any = null;
   constructor() {
     fabric.Object.prototype.set({
@@ -21,7 +24,7 @@ export class FabricService {
     fabric.Object.prototype.toObject = (function (toObject) {
       return function (propertiesToInclude) {
         propertiesToInclude = (propertiesToInclude || []).concat(
-          ['uuid', 'class']
+          ['uuid', 'class', 'dataUrl']
         );
         return toObject.apply(this, [propertiesToInclude]);
       };
@@ -35,18 +38,41 @@ export class FabricService {
     fabric.Textbox.prototype.toSVG = (function (_toSVG) {
       return function () {
         let svg = _toSVG.call(this).split(" ");
-        let cleanSvg = _toSVG.call(this)
+        if (this.dataUrl) {
+          svg.splice(1, 0, 'data-url="' + this.dataUrl + '"');
+        }
         if (this.class) {
           svg.splice(1, 0, 'class="' + this.class + '"');
-          cleanSvg = svg.join(' ')
         }
-        return cleanSvg;
+        if (this.ownMatrixCache) {
+          const matrix = this.ownMatrixCache.value.join(" ")
+          svg.splice(1, 0, 'transform-fixed="matrix(' + matrix + ')"');
+        }
+        return svg.join(" ");
       }
     })(fabric.Textbox.prototype.toSVG)
+    fabric.Image.prototype.toSVG = (function (_toSVG) {
+      return function () {
+        let svg = _toSVG.call(this).split(" ");
+        if (this.dataUrl) {
+          svg.splice(1, 0, 'data-url="' + this.dataUrl + '"');
+        }
+        if (this.class) {
+          svg.splice(1, 0, 'class="' + this.class + '"');
+        }
+        if (this.ownMatrixCache) {
+          const matrix = this.ownMatrixCache.value.join(" ")
+          svg.splice(1, 0, 'transform-fixed="matrix(' + matrix + ')"');
+        }
+        return svg.join(" ");
+      }
+    })(fabric.Image.prototype.toSVG)
   }
 
   public setCanvas() {
-    this._canvas = new fabric.Canvas('fabricSurface', {
+    const canvasEl = document.getElementById('fabric-canvas-wrapper').appendChild(document.createElement("canvas"))
+    canvasEl.setAttribute('id', 'canvas-' + this.currenPage)
+    this._canvas = new fabric.Canvas(canvasEl, {
       // isDrawingMode: true,
       centeredScaling: true,
       backgroundColor: 'transparent',
@@ -59,11 +85,16 @@ export class FabricService {
     this._canvas.on('selection:created', (obj: any) => this.selectedObj = obj)
     this._canvas.on('selection:updated', (obj: any) => this.selectedObj = obj)
     this._canvas.on('selection:cleared', (obj: any) => this.selectedObj = null)
-    this._canvas.add(new fabric.Textbox('Hello Fabric!', {
+    this._canvas.add(new fabric.Textbox('Hello World!', {
       fontFamily: 'Roboto'
     }));
     initAligningGuidelines(this._canvas);
     initCenteringGuidelines(this._canvas);
+    this.canvasPages.push(this._canvas)
+  }
+  addCanvas() {
+    console.log(this._canvas);
+    this.canvasPages.push(this._canvas);
   }
   removeObj() {
     this._canvas.remove(this._canvas.getActiveObject());
@@ -80,8 +111,10 @@ export class FabricService {
   }
   saveSVG() {
     const svg = this._canvas.toSVG();
-    // const svg = this._canvas.toJSON();
+    const json = this._canvas.toJSON();
     navigator.clipboard.writeText(svg)
+    console.log(json);
+
     console.log(svg);
   }
   setFont(fontName: string) {

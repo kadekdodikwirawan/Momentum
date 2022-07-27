@@ -18,6 +18,7 @@ import { OptionsComponent } from './components/options/options.component';
 import { ModalFabComponent } from './components/modal-fab/modal-fab.component';
 import { FontsComponent } from './components/fonts/fonts.component';
 import { FontSizeComponent } from './components/font-size/font-size.component';
+import { AddLinkComponent } from './components/add-link/add-link.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FontSizeComponent } from './components/font-size/font-size.component';
     IconsComponent,
     FontsComponent,
     FontSizeComponent,
+    AddLinkComponent,
     OptionsComponent,
     ModalFabComponent
   ],

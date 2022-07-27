@@ -15,10 +15,10 @@ export class EditorPage implements OnInit {
   public paintComponent: PaintComponent
   constructor(
     public fabric: FabricService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
   ) { }
-
   ngOnInit() {
+
   }
   async options() {
     const modal = await this.modalCtrl.create({

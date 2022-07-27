@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tambah Link</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-label class="ion-padding">Masukan url/link</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="link"></ion-input>
+      <ion-button (click)="saveLink()">
+        Simpan
+      </ion-button>
+    </ion-item>
+    <p *ngIf="error">Error: {{error}}</p>
+  </ion-list>
+</ion-content>

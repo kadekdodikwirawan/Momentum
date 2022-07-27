@@ -9,13 +9,17 @@ import { FabricService } from 'src/app/services/fabric.service';
 export class OptionsComponent implements OnInit {
 
   editWH = false
-  canvasHeight = this.fabric._canvas.getHeight()
-  canvasWidth = this.fabric._canvas.getWidth()
+  canvasHeight = this.fabric._canvas.getHeight() || 0
+  canvasWidth = this.fabric._canvas.getWidth() || 0
+  canvasPages = this.fabric.canvasPages
   constructor(
     public fabric: FabricService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.canvasPages);
+
+  }
 
   editWHFn() {
     this.editWH = !this.editWH
@@ -26,5 +30,11 @@ export class OptionsComponent implements OnInit {
     } else {
       this.fabric._canvas.setWidth(target.value)
     }
+  }
+  addPage() {
+    this.fabric.addCanvas()
+  }
+  switchPage(e: any) {
+
   }
 }

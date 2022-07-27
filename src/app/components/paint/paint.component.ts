@@ -24,7 +24,6 @@ export class PaintComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.fabric.setCanvas()
   }
-
   ngOnInit() {
   }
 }

@@ -29,6 +29,10 @@
     <ion-icon name="layers-sharp"></ion-icon>
     <ion-label>Turun</ion-label>
   </ion-tab-button>
+  <ion-tab-button (click)="addLink()">
+    <ion-icon name="link-outline"></ion-icon>
+    <ion-label>Link</ion-label>
+  </ion-tab-button>
   <ion-tab-button (click)="fabric.animate()">
     <ion-icon name="layers-sharp"></ion-icon>
     <ion-label>Animasi</ion-label>
@@ -63,5 +67,9 @@
   <ion-tab-button (click)="fabric._canvas.getActiveObject().sendBackwards()">
     <ion-icon name="layers-sharp"></ion-icon>
     <ion-label>Turun</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="setJson()">
+    <ion-icon name="layers-sharp"></ion-icon>
+    <ion-label>Json</ion-label>
   </ion-tab-button>
 </ion-tab-bar>
