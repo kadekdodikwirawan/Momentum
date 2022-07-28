@@ -14,5 +14,18 @@ export class ModalFabComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
+  upload() {
+
+  }
+  onChange(e: any) {
+    const file = e.target.files[0]
+    const reader = new FileReader();
+    reader.onloadend = (e) => {
+      // return reader.result
+      this.fabric.addImage(reader.result);
+
+    }
+    reader.readAsDataURL(file)
+  }
 
 }

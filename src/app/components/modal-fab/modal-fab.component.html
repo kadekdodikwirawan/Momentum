@@ -21,5 +21,8 @@
 
 <ion-content>
   <app-icons *ngIf="tab === 'icons'"></app-icons>
-  <div *ngIf="tab === 'background'">Back</div>
+  <div *ngIf="tab === 'background'">
+    <input type="file" (change)="onChange($event)">
+    <button (click)="upload()"> Upload</button>
+  </div>
 </ion-content>

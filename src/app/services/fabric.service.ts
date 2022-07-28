@@ -96,6 +96,15 @@ export class FabricService {
     console.log(this._canvas);
     this.canvasPages.push(this._canvas);
   }
+  addImage(url: any) {
+    let can = this._canvas;
+    fabric.Image.fromURL(url, function (myImg: any) {
+      const img1 = myImg.set({ left: 0, top: 0 });
+      img1.scaleToWidth(can.getWidth())
+      can.add(img1);
+    });
+    this._canvas = can
+  }
   removeObj() {
     this._canvas.remove(this._canvas.getActiveObject());
   }
